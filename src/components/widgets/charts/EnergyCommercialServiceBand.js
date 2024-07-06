@@ -114,19 +114,7 @@ const EnergyCommercialServiceBand = () => {
         <Box>
           <Typography variant="h5">Service Bands</Typography>
         </Box>
-        <FormControl variant="outlined">
-          <InputLabel>State</InputLabel>
-          <Select
-            value={selectedState}
-            onChange={(e) => setSelectedState(e.target.value)}
-            label="State"
-          >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Kano">Kano</MenuItem>
-            <MenuItem value="Katsina">Katsina</MenuItem>
-            <MenuItem value="Jigawa">Jigawa</MenuItem>
-          </Select>
-        </FormControl>
+        
       </Stack>
 
       <Grid container spacing={3} mt={2}>

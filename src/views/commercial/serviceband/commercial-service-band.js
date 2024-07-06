@@ -7,6 +7,7 @@ import BillingEfficiencyServiceBand from '../../../components/dashboards/ecommer
 import CollectionEfficiencyServiceBand from '../../../components/dashboards/ecommerce/CollectionEfficiencyServiceBand';
 import CustomerResponseRateServiceBand from '../../../components/dashboards/ecommerce/CustomerResponseRateServiceBand';
 import EnergyCommercialServiceBand from '../../../components/widgets/charts/EnergyCommercialServiceBand';
+import StateFilter from 'src/layouts/full/shared/breadcrumb/StateFilter'
 
 const BCrumb = [
   {
@@ -28,6 +29,9 @@ const CommercialServiceBand = () => {
       <Breadcrumb title="Commercial Service Band" items={BCrumb} />
       {/* end breadcrumb */}
       <Grid container spacing={3}>
+      <Grid item xs={12}>
+          <StateFilter />
+        </Grid>
         <Grid item xs={12}>
           <EnergyCommercialServiceBand />
         </Grid>
