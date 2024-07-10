@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 import PageContainer from 'src/components/container/PageContainer';
 import YearlyBreakup from '../../../components/dashboards/modern/YearlyBreakup';
@@ -16,6 +16,10 @@ import Followers from '../../../components/widgets/charts/Followers';
 import Views from '../../../components/widgets/charts/Views';
 import Earned from '../../../components/widgets/charts/Earned';
 import CurrentValue from '../../../components/widgets/charts/CurrentValue';
+import StateMapboxFinancialBBD from '../../../components/financial-components/by-business-district-chart-cards/statemapbox-bbd';
+import StateCostBreakdownFinancialBBD from '../../../components/financial-components/by-business-district-chart-cards/statecost-breakdown-bbd';
+import TariffFinancialBBD from '../../../components/financial-components/by-business-district-chart-cards/tarrifs-bbd';
+import BusinessDistrictFilter from '/src/layouts/full/shared/breadcrumb/BusinessDistrictFilter';
 
 const BCrumb = [
   {
@@ -31,63 +35,35 @@ const BCrumb = [
 ];
 
 const FinancialByBusinessDistricts = () => {
+  const handleFilterChange = (filter) => {
+    // Implement the filter change logic here
+    console.log(filter);
+  };
+
   return (
     <PageContainer title="Financial By Business District" description="this is Charts page">
       {/* breadcrumb */}
       <Breadcrumb title="Financial By Business District" items={BCrumb} />
       {/* end breadcrumb */}
+
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+        <Box sx={{ width: 'fit-content' }}>
+          <BusinessDistrictFilter onFilterChange={handleFilterChange} />
+        </Box>
+      </Box>
+      
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Followers />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Views />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Earned />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <SalesTwo />
-        </Grid>
         <Grid item xs={12}>
-          <CurrentValue />
+          <StateMapboxFinancialBBD />
         </Grid>
-        <Grid item xs={12} lg={4}>
+
+        <Grid item xs={12}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlyBreakup />
-            </Grid>
-            <Grid item xs={12}>
-              <MonthlyEarnings />
-            </Grid>
-            <Grid item xs={12}>
-              <MostVisited />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlySales />
-            </Grid>
-            <Grid item xs={12}>
-              <PageImpressions />
+            <Grid item xs={12} sm={6}>
+              <StateCostBreakdownFinancialBBD />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Customers />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Projects />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <RevenueUpdates />
-            </Grid>
-            <Grid item xs={12}>
-              <SalesOverview />
+              <TariffFinancialBBD />
             </Grid>
           </Grid>
         </Grid>

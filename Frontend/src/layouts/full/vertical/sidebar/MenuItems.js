@@ -197,13 +197,6 @@ const Menuitems = [
     icon: IconChartDonut3,
     href: '/financial/financial-service-band',
   },
-
-  {
-    id: uniqueId(),
-    title: 'Customers',
-    icon: IconChartDonut3,
-    href: '/financial/financial-customer',
-  },
   {
     navlabel: true,
     subheader: 'Technical',
@@ -266,13 +259,6 @@ const Menuitems = [
     icon: IconChartDonut3,
     href: '/technical/technical-service-band',
   },
-
-  {
-    id: uniqueId(),
-    title: 'Customers',
-    icon: IconChartDonut3,
-    href: '/technical/technical-customer',
-  },
   
   {
     navlabel: true,
@@ -304,45 +290,14 @@ const Menuitems = [
       },
     ],
   },
+  
   {
     id: uniqueId(),
     title: 'Business Disrict',
     icon: IconChartDonut3,
-    href: '/staff/businessdistrict',
-    children: [
-      {
-        id: uniqueId(),
-        title: 'All Business District',
-        icon: IconPoint,
-        href: '/staff/staff-all-business-district',
-      },
-      {
-        id: uniqueId(),
-        title: 'Business District',
-        icon: IconPoint,
-        href: '/staff/staff-by-business-district',
-      },
-    ],
+    href: '/staff/staff-all-business-district',
   },
-  {
-    id: uniqueId(),
-    title: 'Feeder',
-    icon: IconChartDonut3,
-    href: '/staff/staff-feeder',
-  },
-  {
-    id: uniqueId(),
-    title: 'Service Band',
-    icon: IconChartDonut3,
-    href: '/staff/staff-service-band',
-  },
-
-  {
-    id: uniqueId(),
-    title: 'Customers',
-    icon: IconChartDonut3,
-    href: '/staff/staff-customer',
-  },
+  
 ];
 
 export default Menuitems;

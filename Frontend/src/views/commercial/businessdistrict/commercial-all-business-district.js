@@ -1,21 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
+import StateFilter from 'src/layouts/full/shared/breadcrumb/StateFilter';
 import PageContainer from 'src/components/container/PageContainer';
-import YearlyBreakup from '../../../components/dashboards/modern/YearlyBreakup';
-import Projects from '../../../components/dashboards/modern/Projects';
-import Customers from '../../../components/dashboards/modern/Customers';
-import SalesTwo from '../../../components/dashboards/ecommerce/SalesTwo';
-import MonthlyEarnings from '../../../components/dashboards/modern/MonthlyEarnings';
-import SalesOverview from '../../../components/dashboards/ecommerce/SalesOverview';
-import RevenueUpdates from '../../../components/dashboards/modern/RevenueUpdates';
-import YearlySales from '../../../components/dashboards/ecommerce/YearlySales';
-import MostVisited from '../../../components/widgets/charts/MostVisited';
-import PageImpressions from '../../../components/widgets/charts/PageImpressions';
-import Followers from '../../../components/widgets/charts/Followers';
-import Views from '../../../components/widgets/charts/Views';
-import Earned from '../../../components/widgets/charts/Earned';
-import CurrentValue from '../../../components/widgets/charts/CurrentValue';
+
+import CommercialBusinessDistrictEnergy from '../../../components/widgets/charts/CommercialBusinessDistrictEnergy';
+import CommercialBusinessDistrictATCC from '../../../components/widgets/charts/CommercialBusinessDistrictATCC';
+import CommercialBusinessDistrictBillColl from '../../../components/widgets/charts/CommercialBusinessDistrictBillColl';
 
 const BCrumb = [
   {
@@ -31,65 +22,37 @@ const BCrumb = [
 ];
 
 const CommercialAllBusinessDistricts = () => {
+  const [filters, setFilters] = useState({
+    year: 'All',
+    month: 'All',
+    state: 'All',
+  });
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   return (
     <PageContainer title="Commercial All Business District" description="this is Charts page">
       {/* breadcrumb */}
-      <Breadcrumb title="Commercial All Business District" items={BCrumb} />
+      <Breadcrumb 
+        title="Commercial All Business District" 
+        items={BCrumb} 
+        onFilterChange={handleFilterChange} 
+      />
       {/* end breadcrumb */}
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Followers />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Views />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Earned />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <SalesTwo />
+      <Grid item xs={4}>
+        <StateFilter />
         </Grid>
         <Grid item xs={12}>
-          <CurrentValue />
+          <CommercialBusinessDistrictEnergy filters={filters} />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlyBreakup />
-            </Grid>
-            <Grid item xs={12}>
-              <MonthlyEarnings />
-            </Grid>
-            <Grid item xs={12}>
-              <MostVisited />
-            </Grid>
-          </Grid>
+        <Grid item xs={12}>
+          <CommercialBusinessDistrictATCC filters={filters} />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlySales />
-            </Grid>
-            <Grid item xs={12}>
-              <PageImpressions />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Customers />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Projects />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <RevenueUpdates />
-            </Grid>
-            <Grid item xs={12}>
-              <SalesOverview />
-            </Grid>
-          </Grid>
+        <Grid item xs={12}>
+          <CommercialBusinessDistrictBillColl filters={filters} />
         </Grid>
       </Grid>
     </PageContainer>

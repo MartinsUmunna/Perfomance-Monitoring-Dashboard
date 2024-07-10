@@ -1,21 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
+import StateFilter from 'src/layouts/full/shared/breadcrumb/StateFilter';
 import PageContainer from 'src/components/container/PageContainer';
-import YearlyBreakup from '../../../components/dashboards/modern/YearlyBreakup';
-import Projects from '../../../components/dashboards/modern/Projects';
-import Customers from '../../../components/dashboards/modern/Customers';
-import SalesTwo from '../../../components/dashboards/ecommerce/SalesTwo';
-import MonthlyEarnings from '../../../components/dashboards/modern/MonthlyEarnings';
-import SalesOverview from '../../../components/dashboards/ecommerce/SalesOverview';
-import RevenueUpdates from '../../../components/dashboards/modern/RevenueUpdates';
-import YearlySales from '../../../components/dashboards/ecommerce/YearlySales';
-import MostVisited from '../../../components/widgets/charts/MostVisited';
-import PageImpressions from '../../../components/widgets/charts/PageImpressions';
-import Followers from '../../../components/widgets/charts/Followers';
-import Views from '../../../components/widgets/charts/Views';
-import Earned from '../../../components/widgets/charts/Earned';
-import CurrentValue from '../../../components/widgets/charts/CurrentValue';
+import ATCCStates from '../../../components/dashboards/ecommerce/ATCCStates';
+import CollectionEfficiencyStates from '../../../components/dashboards/ecommerce/CollectionEfficiencyStates';
+import BillingEfficiencyStates from '../../../components/dashboards/ecommerce/BillingEfficiencyStates';
+import EnergyDeliveredStates from '../../../components/widgets/charts/EnergyDeliveredStates';
+import EnergyBilledStates from '../../../components/widgets/charts/EnergyBilledStates';
+import EnergyCollectedStates from '../../../components/widgets/charts/EnergyCollectedStates';
+import StatesMaps from '../../../components/widgets/charts/StatesMaps';
+import CustomerMetrics from 'src/components/dashboards/ecommerce/CustomerMetrics';
 
 const BCrumb = [
   {
@@ -31,65 +26,51 @@ const BCrumb = [
 ];
 
 const CommercialByState = () => {
+  const [filters, setFilters] = useState({
+    year: 'All',
+    month: 'All',
+    state: '',
+  });
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   return (
-    <PageContainer title="Commercial By State" description="this is Charts page">
-      {/* breadcrumb */}
-      <Breadcrumb title="Commercial by State" items={BCrumb} />
-      {/* end breadcrumb */}
+    <PageContainer title="Commercial By State" description="This is Charts page">
+      <Breadcrumb
+        title="Commercial by State"
+        items={BCrumb}
+        filters={filters}
+        onFilterChange={handleFilterChange}
+      />
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Followers />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Views />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Earned />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <SalesTwo />
+        <Grid item xs={4}>
+          <StateFilter />
         </Grid>
         <Grid item xs={12}>
-          <CurrentValue />
+          <StatesMaps filters={filters} />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlyBreakup />
-            </Grid>
-            <Grid item xs={12}>
-              <MonthlyEarnings />
-            </Grid>
-            <Grid item xs={12}>
-              <MostVisited />
-            </Grid>
-          </Grid>
+        <Grid item xs={12} sm={4}>
+          <EnergyDeliveredStates />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlySales />
-            </Grid>
-            <Grid item xs={12}>
-              <PageImpressions />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Customers />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Projects />
-            </Grid>
-          </Grid>
+        <Grid item xs={12} sm={4}>
+          <EnergyBilledStates />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <RevenueUpdates />
-            </Grid>
-            <Grid item xs={12}>
-              <SalesOverview />
-            </Grid>
-          </Grid>
+        <Grid item xs={12} sm={4}>
+          <EnergyCollectedStates />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <ATCCStates />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <BillingEfficiencyStates />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <CollectionEfficiencyStates />
+        </Grid>
+        <Grid item xs={12}>
+          <CustomerMetrics />
         </Grid>
       </Grid>
     </PageContainer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 import PageContainer from 'src/components/container/PageContainer';
 import YearlyBreakup from '../../../components/dashboards/modern/YearlyBreakup';
@@ -16,6 +16,11 @@ import Followers from '../../../components/widgets/charts/Followers';
 import Views from '../../../components/widgets/charts/Views';
 import Earned from '../../../components/widgets/charts/Earned';
 import CurrentValue from '../../../components/widgets/charts/CurrentValue';
+import AvailabilityTechnicalFeeder from '../../../components/technical-components/feeder-charts-cards/availability-feeder';
+import StateMenuFilter from 'src/layouts/full/shared/breadcrumb/StateMenuFilter';
+import BusinessDistrictFilter from 'src/layouts/full/shared/breadcrumb/BusinessDistrictFilter';
+import FeederType from 'src/layouts/full/shared/breadcrumb/FeederType';
+
 
 const BCrumb = [
   {
@@ -31,65 +36,35 @@ const BCrumb = [
 ];
 
 const TechnicalFeeder = () => {
+  const buttonStyles = {
+    minWidth: '100px', // Adjust this value as needed
+    margin: '5px',
+  };
   return (
     <PageContainer title="Technical Feeder" description="this is Charts page">
       {/* breadcrumb */}
       <Breadcrumb title="Technical Feeder" items={BCrumb} />
       {/* end breadcrumb */}
+      <Grid container item xs={12} justifyContent="space-between" alignItems="center">
+          <Grid item xs={12} sm={6}>
+            <Box display="flex" flexWrap="wrap">
+              <BusinessDistrictFilter buttonStyles={buttonStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box display="flex" justifyContent="flex-end" alignItems="center">
+              <Box style={{ marginRight: '10px' }}>
+                <StateMenuFilter />
+              </Box>
+              <Box>
+                <FeederType buttonStyles={buttonStyles} />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Followers />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Views />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Earned />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <SalesTwo />
-        </Grid>
         <Grid item xs={12}>
-          <CurrentValue />
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlyBreakup />
-            </Grid>
-            <Grid item xs={12}>
-              <MonthlyEarnings />
-            </Grid>
-            <Grid item xs={12}>
-              <MostVisited />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlySales />
-            </Grid>
-            <Grid item xs={12}>
-              <PageImpressions />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Customers />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Projects />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <RevenueUpdates />
-            </Grid>
-            <Grid item xs={12}>
-              <SalesOverview />
-            </Grid>
-          </Grid>
+          <AvailabilityTechnicalFeeder />
         </Grid>
       </Grid>
     </PageContainer>

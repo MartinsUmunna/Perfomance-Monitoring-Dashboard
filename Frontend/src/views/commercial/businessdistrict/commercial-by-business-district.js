@@ -1,21 +1,14 @@
-import React from 'react';
-import { Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 import PageContainer from 'src/components/container/PageContainer';
-import YearlyBreakup from '../../../components/dashboards/modern/YearlyBreakup';
-import Projects from '../../../components/dashboards/modern/Projects';
-import Customers from '../../../components/dashboards/modern/Customers';
-import SalesTwo from '../../../components/dashboards/ecommerce/SalesTwo';
-import MonthlyEarnings from '../../../components/dashboards/modern/MonthlyEarnings';
-import SalesOverview from '../../../components/dashboards/ecommerce/SalesOverview';
-import RevenueUpdates from '../../../components/dashboards/modern/RevenueUpdates';
-import YearlySales from '../../../components/dashboards/ecommerce/YearlySales';
-import MostVisited from '../../../components/widgets/charts/MostVisited';
-import PageImpressions from '../../../components/widgets/charts/PageImpressions';
-import Followers from '../../../components/widgets/charts/Followers';
-import Views from '../../../components/widgets/charts/Views';
-import Earned from '../../../components/widgets/charts/Earned';
-import CurrentValue from '../../../components/widgets/charts/CurrentValue';
+import BusinessDistrictsATCC from '../../../components/dashboards/modern/BusinessDistrictsATCC';
+import BusinessDistrictsBillingEfficiency from '../../../components/dashboards/modern/BusinessDistrictsBillingEfficiency';
+import BusinessDistrictsCollectionEfficiency from '../../../components/dashboards/modern/BusinessDistrictsCollectionEfficiency';
+import EnergyMetrics from 'src/components/dashboards/ecommerce/EnergyMetrics';
+import CustomerMetricsBusinessDistrict from 'src/components/dashboards/ecommerce/CustomerMetricsBusinessDistrict';
+import BusinessDistrictMap from '../../../components/widgets/charts/BusinessDistrictMap';
+import BusinessDistrictFilter from '/src/layouts/full/shared/breadcrumb/BusinessDistrictFilter';
 
 const BCrumb = [
   {
@@ -31,67 +24,47 @@ const BCrumb = [
 ];
 
 const CommercialByBusinessDistricts = () => {
+  const [filters, setFilters] = useState({ year: 'All', month: 'All', district: '' });
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
+  };
+
   return (
     <PageContainer title="Commercial By Business District" description="this is Charts page">
-      {/* breadcrumb */}
-      <Breadcrumb title="Commercial By Business District" items={BCrumb} />
-      {/* end breadcrumb */}
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Followers />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Views />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Earned />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <SalesTwo />
-        </Grid>
-        <Grid item xs={12}>
-          <CurrentValue />
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlyBreakup />
-            </Grid>
-            <Grid item xs={12}>
-              <MonthlyEarnings />
-            </Grid>
-            <Grid item xs={12}>
-              <MostVisited />
+      <Breadcrumb 
+        title="Commercial By Business District" 
+        items={BCrumb} 
+      />
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+        <Box sx={{ width: 'fit-content' }}>
+          <BusinessDistrictFilter onFilterChange={handleFilterChange} />
+        </Box>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <BusinessDistrictMap selectedDistrict={filters.district} />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Grid container direction="column" spacing={3}>
+              <Grid item>
+                <BusinessDistrictsATCC filters={filters} />
+              </Grid>
+              <Grid item>
+                <BusinessDistrictsBillingEfficiency filters={filters} />
+              </Grid>
+              <Grid item>
+                <BusinessDistrictsCollectionEfficiency filters={filters} />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <YearlySales />
-            </Grid>
-            <Grid item xs={12}>
-              <PageImpressions />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Customers />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Projects />
-            </Grid>
+          <Grid item xs={12} md={6}>
+            <EnergyMetrics filters={filters} />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <CustomerMetricsBusinessDistrict filters={filters} />
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <RevenueUpdates />
-            </Grid>
-            <Grid item xs={12}>
-              <SalesOverview />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+      </Box>
     </PageContainer>
   );
 };

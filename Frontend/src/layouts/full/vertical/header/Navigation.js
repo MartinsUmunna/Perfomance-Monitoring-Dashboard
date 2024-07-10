@@ -9,7 +9,7 @@ const AppDD = () => {
   return (
     <>
 
-      <Button color="inherit" sx={{color: (theme) => theme.palette.text.secondary}} variant="text" to='/overview/overviewpage' component={Link}>
+      <Button color="inherit" sx={{color: (theme) => theme.palette.text.secondary}} variant="text" to='/home' component={Link}>
         Home
       </Button>
       <Button color="inherit" sx={{color: (theme) => theme.palette.text.secondary}} variant="text" to='/overview/overviewpage' component={Link}>
@@ -26,6 +26,9 @@ const AppDD = () => {
       </Button>
       <Button color="inherit" sx={{color: (theme) => theme.palette.text.secondary}} variant="text" to="/staff/staff-overview" component={Link}>
         Staff Manager
+      </Button>
+      <Button color="inherit" sx={{color: (theme) => theme.palette.text.secondary}} variant="text" to="/staff/staff-overview" component={Link}>
+        NERC
       </Button>
     </>
   );
