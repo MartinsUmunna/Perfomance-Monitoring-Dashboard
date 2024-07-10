@@ -6,9 +6,14 @@ import ATCCServiceBand from '../../../components/dashboards/ecommerce/ATCCServic
 import BillingEfficiencyServiceBand from '../../../components/dashboards/ecommerce/BillingEfficiencyServiceBand';
 import CollectionEfficiencyServiceBand from '../../../components/dashboards/ecommerce/CollectionEfficiencyServiceBand';
 import CustomerResponseRateServiceBand from '../../../components/dashboards/ecommerce/CustomerResponseRateServiceBand';
+<<<<<<< HEAD
 import BreakdownCommercialSBT from '../../../components/commercial-components/service-band-charts-cards/commercial-breakdown-sb';
 import ATCCCommercialSBT from '../../../components/commercial-components/service-band-charts-cards/atcc-breakdown-sb'
 import StateFilter from '../../../layouts/full/shared/breadcrumb/StateFilter';
+=======
+import EnergyCommercialServiceBand from '../../../components/widgets/charts/EnergyCommercialServiceBand';
+import StateFilter from 'src/layouts/full/shared/breadcrumb/StateFilter'
+>>>>>>> 326bedd12cbaf49d9d312fa19f6f48880d6756c2
 
 const BCrumb = [
   {

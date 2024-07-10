@@ -35,15 +35,41 @@ const CommercialFeeder = () => {
       <Breadcrumb title="Commercial Feeder" items={BCrumb} />
       {/* end breadcrumb */}
       <Grid container spacing={3}>
+<<<<<<< HEAD
       <Grid item xs={12} lg={6}>
           <LowestATCCFeeder />
+=======
+        <Grid container item xs={12} justifyContent="space-between" alignItems="center">
+          <Grid item xs={12} sm={6}>
+            <Box display="flex" flexWrap="wrap">
+              <BusinessDistrictFilter buttonStyles={buttonStyles} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box display="flex" justifyContent="flex-end" alignItems="center">
+              <Box style={{ marginRight: '10px' }}>
+                <StateMenuFilter />
+              </Box>
+              <Box>
+                <FeederType buttonStyles={buttonStyles} />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} lg={6}>
+          <Top5FeedersATCC />
+>>>>>>> 326bedd12cbaf49d9d312fa19f6f48880d6756c2
         </Grid>
         <Grid item xs={12} lg={6}>
           <HighestATCCFeeder />
         </Grid>
         <Grid item xs={12}>
+<<<<<<< HEAD
           <BreakdownCommercialFeeder />
         
+=======
+          <EnergyFeeders />
+>>>>>>> 326bedd12cbaf49d9d312fa19f6f48880d6756c2
         </Grid>
       </Grid>
     </PageContainer>
