@@ -27,7 +27,7 @@ const CustomerMetricsBusinessDistrict = () => {
       toolbar: {
         show: false,
       },
-      height: 75,
+      height: 50,
       sparkline: {
         enabled: true,
       },
@@ -54,7 +54,7 @@ const CustomerMetricsBusinessDistrict = () => {
         fontSize: '8px',
         colors: [theme.palette.mode === 'dark' ? '#fff' : '#000'],
       },
-      offsetY: -20,
+      offsetY: -12,
     },
     xaxis: {
       categories: ['March', 'April', 'May', 'June'],
@@ -119,6 +119,7 @@ const CustomerMetricsBusinessDistrict = () => {
                 </Typography>
               </TableCell>
               <TableCell>
+               
                 <Chart
                   options={getColumnChartOptions(primary, customerResponseRateSeries[0].data, 'percentage')}
                   series={customerResponseRateSeries}
@@ -126,6 +127,7 @@ const CustomerMetricsBusinessDistrict = () => {
                   height="50px"
                   width="100px"
                 />
+                
               </TableCell>
             </TableRow>
             <TableRow>

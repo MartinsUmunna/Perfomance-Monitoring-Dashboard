@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Divider, Box } from '@mui/material';
-import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from '../../../components/container/PageContainer';
+import Breadcrumb from "layouts/full/shared/breadcrumb/Breadcrumb";
 import ChatSidebar from '../../../components/apps/chats/ChatSidebar';
 import ChatContent from '../../../components/apps/chats/ChatContent';
 import ChatMsgSent from '../../../components/apps/chats/ChatMsgSent';
 import AppCard from 'src/components/shared/AppCard';
+import PageContainer from 'components/container/PageContainer';
 
 const Chats = () => {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);

@@ -19,7 +19,9 @@ import CurrentValue from '../../../components/widgets/charts/CurrentValue';
 import RevenueCostFinancialSB from '../../../components/financial-components/service-band-chart-cards/revenue-cost-sb'
 import TariffFinancialSB from '../../../components/financial-components/service-band-chart-cards/tariff-sb'
 import StateFilter from 'src/layouts/full/shared/breadcrumb/StateFilter';
-
+import FinancialTariffServiceBand from '../../../components/financial-components/service-band-chart-cards/FinancialTariffServiceBand'
+import MYTOAllowedTariffSBWidget from '../../../components/financial-components/service-band-chart-cards/MYTOAllowedTariffSBWidget'
+import CollectionTariffSBWidget from '../../../components/financial-components/service-band-chart-cards/CollectionTariffSBWidget'
 
 const BCrumb = [
   {
@@ -36,19 +38,39 @@ const BCrumb = [
 
 const FinancialServiceBand = () => {
   return (
-    <PageContainer title="Financial Service Band" description="this is Charts page">
+    <PageContainer title="Financial Service Band" description="this is Financial Service Band page">
       {/* breadcrumb */}
       <Breadcrumb title="Financial Service Band" items={BCrumb} />
       {/* end breadcrumb */}
       <Grid container spacing={3}>
-      <Grid item xs={4}>
-          <StateFilter />
-        </Grid>
-        <Grid item xs={12}>
-          <RevenueCostFinancialSB />
-        </Grid>
-        <Grid item xs={12}>
-          <TariffFinancialSB />
+        
+        <Grid item xs={12} lg={12}>
+          <Grid container spacing={3}>
+          <Grid item xs={12}>
+                  <StateFilter />
+                </Grid>
+            <Grid item xs={12} lg={8}>
+              <Grid container spacing={3} direction="column">
+                <Grid item style={{ height: '500px' }}>
+                  <FinancialTariffServiceBand />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} lg={4}>
+              <Grid container spacing={3}>
+                
+                <Grid item xs={12}>
+                  <MYTOAllowedTariffSBWidget />
+                </Grid>
+                <Grid item xs={12}>
+                  <CollectionTariffSBWidget />
+                </Grid>
+                <Grid item xs={12}>
+                  <MYTOAllowedTariffSBWidget />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </PageContainer>

@@ -7,19 +7,16 @@ import { IconGridDots } from '@tabler/icons';
 import DashboardCard from '../../shared/DashboardCard';
 
 const BillingEfficiency = () => {
-  // chart color
   const theme = useTheme();
   const primary = theme.palette.primary.main;
   const secondary = theme.palette.secondary.main;
   const primarylight = theme.palette.primary.light;
   const textColor = theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.8)' : '#2A3547';
 
-  // chart
   const optionscolumnchart = {
     chart: {
       type: 'donut',
       fontFamily: "'Plus Jakarta Sans', sans-serif;",
-
       toolbar: {
         show: false,
       },
@@ -29,11 +26,9 @@ const BillingEfficiency = () => {
     colors: [primary, primarylight],
     plotOptions: {
       pie: {
-        
         donut: {
           size: '89%',
           background: 'transparent',
-
           labels: {
             show: true,
             name: {
@@ -70,6 +65,13 @@ const BillingEfficiency = () => {
   };
   const seriescolumnchart = [71, 29];
 
+  const monthData = [
+    { month: 'March', value: '65%', color: 'primary' },
+    { month: 'April', value: '68%', color: 'secondary' },
+    { month: 'May', value: '72%', color: 'warning' },
+    { month: 'June', value: '75%', color: 'success' },
+  ];
+
   return (
     <DashboardCard title="Billing Efficiency" subtitle="71%">
       <>
@@ -83,60 +85,35 @@ const BillingEfficiency = () => {
         </Box>
 
         <Stack direction="row" spacing={2} justifyContent="space-between" mt={7}>
-          <Stack direction="row" spacing={2} alignItems="center">
-            <Box
-              width={38}
-              height={38}
-              bgcolor="primary.light"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Typography
-                color="primary.main"
+          {monthData.map((item, index) => (
+            <Stack key={index} direction="row" spacing={1} alignItems="center">
+              <Box
+                width={30}
+                height={30}
+                bgcolor={`${item.color}.light`}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
               >
-                <IconGridDots width={22} />
-              </Typography>
-            </Box>
-            <Box>
-              <Typography variant="h6" fontWeight="600">
-                68%
-              </Typography>
-              <Typography variant="subtitle2" color="textSecondary">
-                This Month
-              </Typography>
-            </Box>
-          </Stack>
-          <Stack direction="row" spacing={2} alignItems="center">
-            <Box
-              width={38}
-              height={38}
-              bgcolor="secondary.light"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Typography
-                color="secondary.main"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <IconGridDots width={22} />
-              </Typography>
-            </Box>
-            <Box>
-              <Typography variant="h6" fontWeight="600">
-                75%
-              </Typography>
-              <Typography variant="subtitle2" color="textSecondary">
-                Last Month
-              </Typography>
-            </Box>
-          </Stack>
+                <Typography
+                  color={`${item.color}.main`}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <IconGridDots width={18} />
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" fontWeight="600" fontSize="0.875rem">
+                  {item.value}
+                </Typography>
+                <Typography variant="subtitle2" color="textSecondary" fontSize="0.75rem">
+                  {item.month}
+                </Typography>
+              </Box>
+            </Stack>
+          ))}
         </Stack>
       </>
     </DashboardCard>
