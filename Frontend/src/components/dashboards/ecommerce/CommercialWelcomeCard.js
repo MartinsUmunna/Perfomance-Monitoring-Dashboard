@@ -72,9 +72,9 @@ const WelcomeCard = () => {
   };
 
   // Hardcoded data for sparklines
-  const seriesEnergyDelivered = [{ data: [150, 160, 145, 175, 180, 155, 160, 170, 165, 150, 140, 175], name: '' }];
-  const seriesEnergyBilled = [{ data: [100, 110, 105, 115, 120, 95, 100, 110, 105, 90, 95, 115], name: '' }];
-  const seriesEnergyCollected = [{ data: [70, 65, 60, 75, 80, 55, 60, 70, 65, 52, 55, 89], name: '' }];
+  const seriesEnergyDelivered = [{ data: [150, 160, 145, 175], name: '' }];
+  const seriesEnergyBilled = [{ data: [100, 110, 105, 115], name: '' }];
+  const seriesEnergyCollected = [{ data: [70, 65, 60, 75], name: '' }];
 
   return (
     <Card elevation={0} sx={{ backgroundColor: primaryLight, py: 0 }}>
