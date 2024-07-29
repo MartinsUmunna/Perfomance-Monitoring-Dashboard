@@ -10,7 +10,7 @@ const config = {
     encrypt: true,
     trustServerCertificate: true
   },
-  port: 1433 // Only if not using an instance name
+  port: 1434 // Only if not using an instance name
 };
 
 async function connect() {

@@ -6,7 +6,7 @@ const router = express.Router();
 // Fetch metrics
 router.get('/metrics', async (req, res) => {
   try {
-    const result = await sql.query`SELECT * FROM state`;
+    const result = await sql.query`SELECT * FROM Feeder`;
     res.json(result.recordset); // Send the fetched data as a response
   } catch (err) {
     console.error(err);
